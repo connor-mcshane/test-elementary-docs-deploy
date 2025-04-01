@@ -3,8 +3,9 @@ name: "dbt docs deploy"
 # Triggers
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/10 * * * *"
+  push:
+    branches:
+      - main
 
 jobs:
   deploy-dbt-docs-from-main-branch:
@@ -24,7 +25,6 @@ jobs:
         id: step-02
         run: |
           ls -ltra
-          mkdir docs
           cp index.html /docs
           
 
