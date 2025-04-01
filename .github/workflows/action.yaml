@@ -25,7 +25,7 @@ jobs:
         id: step-02
         run: |
           ls -ltra
-          cp index.html /docs
+          cat index.html 
           
 
       - name: "Step 02 - Upload pages to artifact"
@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          path: ${{ github.workspace }}/docs
+          path: ${{ github.workspace }}/index.html 
