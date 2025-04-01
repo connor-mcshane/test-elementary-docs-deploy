@@ -1,0 +1,36 @@
+name: "dbt docs deploy"
+
+# Triggers
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/10 * * * *"
+
+jobs:
+  deploy-dbt-docs-from-main-branch:
+    permissions:
+      contents: "read"
+      id-token: "write"
+    runs-on: ubuntu-latest
+    
+
+    steps:
+                  #checkout the code
+      - id: checkout-code
+        name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: "Step 01 - Pull down elementary docs"
+        id: step-02
+        run: |
+          ls -ltra
+          mkdir docs
+          cp index.html /docs
+          
+
+      - name: "Step 02 - Upload pages to artifact"
+        id: step-03
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: ${{ github.workspace }}/docs
