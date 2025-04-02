@@ -26,6 +26,8 @@ jobs:
         run: |
           ls -ltra
           cat index.html 
+          mkdir elementary_docs
+          mv index.html ./elementary_docs
           
 
       - name: "Step 02 - Upload pages to artifact"
@@ -33,4 +35,4 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          path: ${{ github.workspace }}
+          path: ${{ github.workspace }}/elementary_docs
