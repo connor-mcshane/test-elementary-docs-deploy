@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: "read"
       id-token: "write"
+      pages: write      # to deploy to Pages
     runs-on: ubuntu-latest
     
 
